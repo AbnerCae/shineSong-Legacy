@@ -14,11 +14,11 @@ module.exports = [{
 }, {
 	channel: '1063560280879136815',
 	type: 'loop',
-	every: 90000,
+	every: 50000,
 	executeOnStartup: true,
 	code: `
- $log[execute start event in loop]
+ $log[> [music] Loop executado.]
  $sendMessage[{execute:startEvent}]
- $onlyIf[$hasPlayer==true;]
+ $onlyIf[$hasPlayer==true;{execute:endEvent}]
  `
 }]

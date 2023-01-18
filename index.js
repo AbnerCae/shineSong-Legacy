@@ -1,7 +1,7 @@
 const { Voice, LoadCommands, Bot } = require("aoi.js");
 const bot = new Bot({
   token: process.env.TOKEN,
-  prefix: "*",
+  prefix: ["$getServerVar[prefix]", "<@!$clientID>", "<@$clientID>"],
   intents: ["GUILDS", "GUILD_MESSAGES","GUILD_MEMBERS", "GUILD_VOICE_STATES"]
 });
 const loader = new LoadCommands(bot);
@@ -21,6 +21,11 @@ bot.onInteractionCreate();
 voice.onTrackEnd();
 
 bot.variables({
+	"prefix": "*", //prefixo por servidor.
+	"musicFunc": true, //false para desabilitar as funções de música.
+	"textChannel": "",
+	"voiceChannel": "",
+	
 	"server": "915937663717109770",
 	"voiceChannel": "", //canal
 	"textChannel": "", //canal
